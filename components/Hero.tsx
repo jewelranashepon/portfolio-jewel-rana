@@ -1,6 +1,10 @@
+
 "use client";
 import { useEffect, useState } from 'react';
-import { Mail, Phone, MapPin, ArrowDown, Download, Globe, User, ExternalLink } from 'lucide-react';
+import { 
+  Mail, Phone, MapPin, ArrowDown, ExternalLink, 
+  Globe2, User2, Code2, Cpu, Globe, Layers, Command 
+} from 'lucide-react';
 import { personal } from '../data/portfolioData';
 
 const roles = [
@@ -48,23 +52,32 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#030712]"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-50"
     >
-      {/* --- Advanced Background --- */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_-20%,#3b82f615,transparent_50%)]" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 pointer-events-none"></div>
+      {/* --- Colorful Background Decorations --- */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        {/* Soft Colorful Blobs */}
+        <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-blue-200/50 rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-purple-200/50 rounded-full blur-[120px] animate-pulse" />
         
-        {/* Animated Glows */}
-        <div className="absolute top-1/3 -left-20 w-96 h-96 bg-cyan-500/20 rounded-full blur-[120px] animate-pulse" />
-        <div className="absolute bottom-1/3 -right-20 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px] animate-pulse" />
+        {/* Floating Icons Decoration */}
+        <div className="absolute inset-0 opacity-20 pointer-events-none">
+          <Code2 className="absolute top-40 left-[15%] text-blue-600 animate-bounce transition-all duration-1000" size={48} />
+          <Layers className="absolute top-40 right-[20%] text-indigo-600 animate-pulse" size={40} />
+          <Cpu className="absolute bottom-40 left-[20%] text-purple-600 animate-bounce" size={44} />
+          <Globe className="absolute bottom-20 right-[15%] text-cyan-600 animate-pulse" size={52} />
+          <Command className="absolute top-1/2 left-10 text-slate-400" size={32} />
+        </div>
+
+        {/* Subtle Grid */}
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-30 mix-blend-soft-light"></div>
       </div>
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 py-20">
         <div className="flex flex-col items-center text-center">
           
           {/* Status Badge */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/50 border border-slate-800 text-slate-300 text-xs font-medium mb-10 backdrop-blur-md">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-slate-200 shadow-sm text-slate-600 text-xs font-semibold mb-8">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
@@ -73,72 +86,71 @@ export default function Hero() {
           </div>
 
           {/* Name & Title */}
-          <h2 className="text-slate-400 font-medium tracking-[0.2em] uppercase text-sm mb-4">
-            Hello, I am
+          <h2 className="text-indigo-600 font-bold tracking-[0.25em] uppercase text-xs mb-4">
+            Creative Developer & Designer
           </h2>
-          <h1 className="text-6xl md:text-8xl font-bold text-white mb-6 tracking-tight">
+          <h1 className="text-6xl md:text-8xl font-black text-slate-900 mb-6 tracking-tight">
             {personal.name}
           </h1>
 
           {/* Typewriter Section */}
-          <div className="h-10 flex items-center justify-center mb-8">
-            <span className="text-2xl md:text-3xl font-light text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+          <div className="h-12 flex items-center justify-center mb-8">
+            <span className="text-2xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">
               {displayed}
-              <span className="inline-block w-[2px] h-8 bg-cyan-500 ml-1 align-middle animate-pulse" />
+              <span className="inline-block w-[3px] h-8 bg-indigo-600 ml-1 align-middle animate-pulse" />
             </span>
           </div>
 
-          <p className="max-w-xl mx-auto text-slate-400 text-lg leading-relaxed mb-12">
-            Specializing in <span className="text-slate-200">modern web ecosystems</span>. 
-            I bridge the gap between complex backend logic and pixel-perfect frontend experiences.
+          <p className="max-w-2xl mx-auto text-slate-800 text-lg md:text-xl leading-relaxed mb-12">
+            Building <span className="text-indigo-600 font-semibold">high-performance websites</span>. 
+            I transform ideas into scalable reality using the latest React ecosystem and modern UI patterns.
           </p>
 
           {/* Contact Info Pills */}
-          <div className="flex flex-wrap items-center justify-center gap-6 mb-12">
-            <div className="flex items-center gap-2 text-slate-400 hover:text-slate-200 transition-colors cursor-default">
-              <MapPin size={16} className="text-cyan-500" />
-              <span className="text-sm">{personal.location}</span>
+          <div className="flex flex-wrap items-center justify-center gap-4 mb-12">
+            <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-100 shadow-sm text-slate-500">
+              <MapPin size={16} className="text-indigo-500" />
+              <span className="text-sm font-medium">{personal.location}</span>
             </div>
-            <a href={`mailto:${personal.email}`} className="flex items-center gap-2 text-slate-400 hover:text-cyan-400 transition-colors">
-              <Mail size={16} className="text-cyan-500" />
-              <span className="text-sm">{personal.email}</span>
+            <a href={`mailto:${personal.email}`} className="flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-100 shadow-sm text-slate-500 hover:text-indigo-600 transition-all">
+              <Mail size={16} className="text-indigo-500" />
+              <span className="text-sm font-medium">{personal.email}</span>
             </a>
           </div>
 
           {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row items-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center gap-5">
             <button
               onClick={() => scroll('#projects')}
-              className="group relative px-8 py-4 bg-white text-black font-bold rounded-full overflow-hidden transition-all hover:scale-105 active:scale-95"
+              className="group relative px-10 py-4 bg-indigo-600 text-white font-bold rounded-2xl overflow-hidden transition-all hover:bg-indigo-700 hover:shadow-xl hover:shadow-indigo-200 active:scale-95"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-100 to-white opacity-0 group-hover:opacity-100 transition-opacity" />
               <span className="relative flex items-center gap-2">
-                Latest Works <ExternalLink size={18} />
+                View Portfolio <ExternalLink size={18} />
               </span>
             </button>
             
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
                 <a
                 href={personal.github}
                 target="_blank"
-                className="p-4 rounded-full bg-slate-900/50 border border-slate-800 text-slate-400 hover:text-white hover:border-slate-600 transition-all"
+                className="p-4 rounded-2xl bg-white border border-slate-200 text-slate-600 hover:text-indigo-600 hover:border-indigo-200 shadow-sm transition-all"
                 aria-label="GitHub"
                 >
-                <Globe size={20} />
+                <Globe2 size={22} />
                 </a>
                 <a
                 href={personal.linkedin}
                 target="_blank"
-                className="p-4 rounded-full bg-slate-900/50 border border-slate-800 text-slate-400 hover:text-white hover:border-slate-600 transition-all"
+                className="p-4 rounded-2xl bg-white border border-slate-200 text-slate-600 hover:text-indigo-600 hover:border-indigo-200 shadow-sm transition-all"
                 aria-label="LinkedIn"
                 >
-                <User size={20} />
+                <User2 size={22} />
                 </a>
                 <button
                 onClick={() => scroll('#contact')}
-                className="ml-2 px-6 py-4 rounded-full border border-slate-800 text-slate-300 font-medium hover:bg-slate-900 transition-all"
+                className="ml-2 px-8 py-4 rounded-2xl bg-slate-900 text-white font-bold hover:bg-slate-800 transition-all shadow-lg"
                 >
-                Contact Me
+                Let's Talk
                 </button>
             </div>
           </div>
@@ -146,17 +158,16 @@ export default function Hero() {
       </div>
 
       {/* Bottom Decoration */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-500 animate-bounce">
-        <span className="text-[10px] uppercase tracking-[0.3em]">Scroll</span>
-        <ArrowDown size={16} />
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-400 animate-bounce">
+        <ArrowDown size={20} className="text-indigo-400" />
       </div>
 
       {/* Grid Overlay */}
-      <div className="absolute inset-0 z-[-1] opacity-20 [mask-image:radial-gradient(ellipse_at_center,black,transparent)]">
+      <div className="absolute inset-0 z-[-1] opacity-[0.03]">
          <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
             <defs>
                 <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="0.5" />
+                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="black" strokeWidth="1" />
                 </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#grid)" />

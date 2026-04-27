@@ -3,12 +3,14 @@
 import {
   User,
   Briefcase,
-  GraduationCap,
   Code,
   CheckCircle2,
   Zap,
   Layout,
-  Terminal,
+  MapPin,
+  ArrowUpRight,
+  Sparkles,
+  ExternalLink
 } from "lucide-react";
 import { personal } from "../data/portfolioData";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
@@ -18,171 +20,147 @@ const stats = [
     icon: Briefcase,
     label: "Years Experience",
     value: "3+",
-    color: "text-blue-400",
+    gradient: "from-blue-600 to-indigo-600",
+    size: "col-span-1",
   },
   {
     icon: Code,
     label: "Projects Completed",
     value: "20+",
-    color: "text-cyan-400",
+    gradient: "from-purple-600 to-pink-600",
+    size: "col-span-1",
   },
   {
     icon: Layout,
-    label: "WordPress Sites",
+    label: "WordPress Ecosystems",
     value: "15+",
-    color: "text-sky-400",
-  },
-  {
-    icon: User,
-    label: "Satisfied Clients",
-    value: "20+",
-    color: "text-indigo-400",
+    gradient: "from-emerald-500 to-teal-600",
+    size: "col-span-2", // Highlighting core expertise
   },
 ];
 
 const expertise = [
   "Next.js & React Specialist",
-  "Advanced WordPress Development",
-  "Performance Optimization",
-  "Technical SEO Strategy",
+  "Advanced WordPress Architecture",
+  "Performance & Core Web Vitals",
+  "Technical SEO & Growth Strategy",
 ];
 
 export default function About() {
   const { ref, visible } = useScrollAnimation();
 
   return (
-    <section id="about" className="py-32 bg-[#030712] relative overflow-hidden">
-      {/* Background Decorative Element */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-[120px] -z-10" />
+    <section id="about" className="py-12 lg:py-20 bg-[#FDFDFF] relative overflow-hidden">
+      {/* Premium Background Accents */}
+      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:32px_32px] opacity-40" />
+      <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-indigo-200/30 rounded-full blur-[120px] animate-pulse" />
+      <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-purple-200/30 rounded-full blur-[120px]" />
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div
           ref={ref}
-          className={`transition-all duration-1000 ease-out ${
-            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+          className={`transition-all duration-1000 ease-in-out ${
+            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          {/* Header Section */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-            <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-widest mb-4">
-                <Terminal size={14} /> Professional Profile
-              </div>
-              <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight">
-                Crafting digital experiences with{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
-                  precision and passion.
+          <div className="grid lg:grid-cols-12 gap-16 items-center">
+            
+            {/* LEFT: Text Content */}
+            <div className="lg:col-span-7 space-y-10">
+              <div>
+                <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs font-bold uppercase tracking-widest mb-6">
+                  <Sparkles size={14} /> The Blueprint
                 </span>
-              </h2>
-            </div>
-            <div className="hidden md:block w-24 h-px bg-slate-800 mb-6" />
-          </div>
-
-          <div className="grid lg:grid-cols-12 gap-8">
-            {/* Left Column: Biography & Expertise */}
-            <div className="lg:col-span-7 space-y-8">
-              <div className="relative group">
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-3xl blur opacity-10 group-hover:opacity-20 transition duration-1000"></div>
-                <div className="relative bg-slate-900/50 border border-slate-800 backdrop-blur-xl rounded-3xl p-8 md:p-10">
-                  <p className="text-slate-300 leading-relaxed text-lg mb-8">
-                    {personal.summary}
-                  </p>
-
-                  {/* Expertise Tags */}
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    {expertise.map((item) => (
-                      <div
-                        key={item}
-                        className="flex items-center gap-3 text-slate-300"
-                      >
-                        <div className="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-500/10 flex items-center justify-center">
-                          <CheckCircle2
-                            size={14}
-                            className="text-emerald-500"
-                          />
-                        </div>
-                        <span className="text-sm font-medium">{item}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                <h2 className="text-3xl md:text-5xl xl:text-6xl font-bold text-slate-900 tracking-tight leading-[1.1] mb-6">
+                  Architecting <br />
+                  <span className="italic font-serif text-indigo-600">Digital</span> Excellence.
+                </h2>
+                <p className="text-lg text-slate-900 leading-relaxed">
+                  {personal.summary}
+                </p>
               </div>
 
-              {/* Status & Location Cards */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="bg-slate-900/40 border border-slate-800 rounded-2xl p-5 flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center text-cyan-400">
-                    <MapPinIcon />
+              {/* Modern Expertise Pills */}
+              <div className="flex flex-wrap gap-3">
+                {expertise.map((item) => (
+                  <div key={item} className="flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-xl shadow-sm hover:border-indigo-300 transition-colors group">
+                    <CheckCircle2 size={16} className="text-indigo-500 group-hover:scale-110 transition-transform" />
+                    <span className="text-sm font-semibold text-slate-900">{item}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Status Indicator Group */}
+              <div className="flex flex-col sm:flex-row gap-6 pt-6">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-2xl bg-white shadow-xl shadow-slate-200/50 flex items-center justify-center text-slate-600">
+                    <MapPin size={20} />
                   </div>
                   <div>
-                    <p className="text-slate-500 text-xs uppercase font-bold tracking-tighter">
-                      Based In
-                    </p>
-                    <p className="text-white font-medium">
-                      {personal.location}
-                    </p>
+                    <p className="text-[10px] uppercase font-bold text-slate-600 tracking-widest leading-none mb-1">Base</p>
+                    <p className="text-slate-900 font-bold">{personal.location}</p>
                   </div>
                 </div>
-                <div className="bg-slate-900/40 border border-slate-800 rounded-2xl p-5 flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center text-emerald-400">
+
+                <div className="flex items-center gap-4">
+                  <div className="relative w-12 h-12 rounded-2xl bg-indigo-600 shadow-xl shadow-indigo-200 flex items-center justify-center text-white">
                     <Zap size={20} />
+                    <span className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-400 border-2 border-white rounded-full" />
                   </div>
                   <div>
-                    <p className="text-slate-500 text-xs uppercase font-bold tracking-tighter">
-                      Current Status
-                    </p>
-                    <p className="text-white font-medium">Available for Hire</p>
+                    <p className="text-[10px] uppercase font-bold text-slate-600 tracking-widest leading-none mb-1">Status</p>
+                    <p className="text-slate-900 font-bold">Open for Collaboration</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Right Column: Stats Grid (Bento Style) */}
-            <div className="lg:col-span-5 grid grid-cols-2 gap-4">
-              {stats.map(({ icon: Icon, label, value, color }) => (
-                <div
-                  key={label}
-                  className="group relative bg-slate-900/40 border border-slate-800 hover:border-slate-700 rounded-3xl p-8 transition-all duration-300 flex flex-col justify-between"
-                >
+            {/* RIGHT: Bento Grid Stats */}
+            <div className="lg:col-span-5">
+              <div className="grid grid-cols-2 gap-4">
+                {stats.map(({ icon: Icon, label, value, gradient, size }) => (
                   <div
-                    className={`w-12 h-12 rounded-2xl bg-slate-800/50 flex items-center justify-center mb-10 group-hover:scale-110 transition-transform duration-300 ${color}`}
+                    key={label}
+                    className={`relative overflow-hidden group p-5 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500 ${size}`}
                   >
-                    <Icon size={24} />
+                    {/* Hover Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-slate-50 to-white opacity-0 group-hover:opacity-100 transition-opacity" />
+                    
+                    <div className="relative z-10">
+                      <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${gradient} flex items-center justify-center text-white mb-12 group-hover:scale-110 transition-transform duration-500 shadow-lg`}>
+                        <Icon size={22} />
+                      </div>
+                      
+                      <div className="flex justify-between items-end">
+                        <div>
+                          <h4 className="text-4xl font-bold text-slate-900 mb-1 tracking-tight">{value}</h4>
+                          <p className="text-xs font-bold text-slate-600 tracking-widest">{label}</p>
+                        </div>
+                        <div className="p-2 rounded-full bg-slate-50 text-slate-400 group-hover:bg-indigo-600 group-hover:text-white transition-all">
+                          <ArrowUpRight size={16} />
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-4xl font-bold text-white mb-2">
-                      {value}
-                    </p>
-                    <p className="text-slate-500 text-sm font-medium leading-tight">
-                      {label}
-                    </p>
-                  </div>
+                ))}
+
+                {/* Aesthetic "Call to Action" Bento Piece */}
+                <div className="col-span-2 p-8 rounded-[2rem] bg-slate-900 text-white flex flex-row items-center justify-between group cursor-pointer overflow-hidden relative">
+                   <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10" />
+                   <div className="relative z-10">
+                      <p className="text-indigo-400 text-xs font-black uppercase tracking-[0.2em] mb-1">Let's build</p>
+                      <h4 className="text-xl font-bold">Start a conversation</h4>
+                   </div>
+                   <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-indigo-500 transition-colors relative z-10">
+                      <ExternalLink size={20} />
+                   </div>
                 </div>
-              ))}
+              </div>
             </div>
+
           </div>
         </div>
       </div>
     </section>
-  );
-}
-
-// Simple Helper Component
-function MapPinIcon() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="20"
-      height="20"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-      <circle cx="12" cy="10" r="3" />
-    </svg>
   );
 }

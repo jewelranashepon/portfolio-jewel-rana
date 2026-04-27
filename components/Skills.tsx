@@ -2,13 +2,13 @@
 import { useState } from "react";
 import { skills } from "../data/portfolioData";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
-import { Layers, Cpu, Wrench, Globe, CheckCircle2, Award } from "lucide-react";
+import { Layers, Cpu, Wrench, Globe, CheckCircle2, Award, ArrowRight } from "lucide-react";
 
 const categories = [
-  { key: "all", label: "All Tech", icon: Globe },
-  { key: "frontend", label: "Frontend", icon: Layers },
-  { key: "backend", label: "Backend", icon: Cpu },
-  { key: "tools", label: "Tools", icon: Wrench },
+  { key: "all", label: "All Tech", icon: Globe, color: "text-blue-600", bg: "bg-blue-50" },
+  { key: "frontend", label: "Frontend", icon: Layers, color: "text-indigo-600", bg: "bg-indigo-50" },
+  { key: "backend", label: "Backend", icon: Cpu, color: "text-purple-600", bg: "bg-purple-50" },
+  { key: "tools", label: "Tools", icon: Wrench, color: "text-emerald-600", bg: "bg-emerald-50" },
 ];
 
 export default function Skills() {
@@ -21,40 +21,41 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="py-32 bg-[#030712] relative overflow-hidden"
+      className="py-12 lg:py-20 bg-[#F8FAFC] relative overflow-hidden" // Light, clean background
     >
-      {/* Background Accents */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,#3b82f605,transparent_70%)] pointer-events-none" />
+      {/* Soft Colorful Accents */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-100/50 rounded-full blur-[120px] -mr-64 -mt-64" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-100/50 rounded-full blur-[120px] -ml-64 -mb-64" />
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         <div
           ref={ref}
           className={`transition-all duration-1000 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
         >
           {/* Section Header */}
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
-            <div className="max-w-2xl">
-              <h2 className="text-sm font-bold text-cyan-500 uppercase tracking-[0.3em] mb-4">
+            <div className="max-w-3xl text-left">
+              <span className="inline-block px-4 py-1.5 mb-4 text-xs font-bold tracking-widest text-indigo-600 uppercase bg-indigo-100 rounded-full">
                 Technical Proficiency
-              </h2>
-              <h3 className="text-4xl md:text-5xl font-bold text-white tracking-tight">
+              </span>
+              <h3 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
                 Modern Stack &{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-blue-500">
                   Expertise.
                 </span>
               </h3>
             </div>
 
-            {/* WordPress Expert Badge - Right Side */}
-            <div className="flex items-center gap-4 px-6 py-4 rounded-2xl bg-gradient-to-br from-blue-500/10 to-transparent border border-blue-500/20 backdrop-blur-sm">
-              <div className="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center text-white shadow-[0_0_20px_rgba(59,130,246,0.5)]">
+            {/* WordPress Expert Badge - Refined for Light Mode */}
+            <div className="flex items-center gap-4 px-6 py-4 rounded-2xl bg-white shadow-xl shadow-blue-500/5 border border-slate-100">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-blue-200">
                 <Award size={24} />
               </div>
               <div>
-                <p className="text-white font-bold text-lg leading-none">
+                <p className="text-slate-900 font-bold text-lg leading-none">
                   WordPress Expert
                 </p>
-                <p className="text-slate-400 text-xs mt-1 uppercase tracking-tighter">
+                <p className="text-slate-500 text-xs mt-1 font-medium uppercase tracking-wider">
                   Enterprise Solutions
                 </p>
               </div>
@@ -67,19 +68,15 @@ export default function Skills() {
               <button
                 key={cat.key}
                 onClick={() => setActive(cat.key)}
-                className={`group flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300 border ${
+                className={`group flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold transition-all duration-300 border ${
                   active === cat.key
-                    ? "bg-white text-black border-white"
-                    : "text-slate-400 border-slate-800 hover:border-slate-600 hover:bg-slate-900/50"
+                    ? "bg-indigo-600 text-white border-indigo-600 shadow-lg shadow-indigo-200"
+                    : "bg-white text-slate-600 border-slate-200 hover:border-indigo-300 hover:bg-indigo-50/50"
                 }`}
               >
                 <cat.icon
-                  size={16}
-                  className={
-                    active === cat.key
-                      ? "text-black"
-                      : "text-slate-500 group-hover:text-cyan-400"
-                  }
+                  size={18}
+                  className={active === cat.key ? "text-white" : cat.color}
                 />
                 {cat.label}
               </button>
@@ -87,41 +84,41 @@ export default function Skills() {
           </div>
 
           {/* Skills Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {filtered.map((skill) => (
               <div
                 key={skill.name}
-                className="group relative bg-slate-900/40 border border-slate-800/50 rounded-2xl p-6 transition-all duration-300 hover:bg-slate-800/40 hover:border-cyan-500/30 overflow-hidden"
+                className="group relative bg-white border border-slate-200 rounded-3xl p-6 shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-indigo-500/10"
               >
-                {/* Hover Background Glow */}
-                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-
                 <div className="relative z-10">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-slate-200 font-bold tracking-tight group-hover:text-white transition-colors">
+                  <div className="flex items-center justify-between mb-6">
+                    <span className="text-slate-900 font-extrabold text-lg group-hover:text-indigo-600 transition-colors">
                       {skill.name}
                     </span>
-                    <CheckCircle2
-                      size={16}
-                      className="text-slate-700 group-hover:text-cyan-500 transition-colors"
-                    />
+                    <div className="p-2 rounded-lg bg-slate-50 group-hover:bg-indigo-50 transition-colors">
+                      <CheckCircle2
+                        size={18}
+                        className="text-slate-300 group-hover:text-indigo-600 transition-colors"
+                      />
+                    </div>
                   </div>
 
-                  {/* Skill Level Indicator - Minimalist Style */}
-                  <div className="flex gap-1 mb-2">
+                  {/* Skill Level Indicator - High Contrast */}
+                  <div className="flex gap-1.5 mb-3">
                     {[...Array(5)].map((_, i) => (
                       <div
                         key={i}
-                        className={`h-1 flex-1 rounded-full transition-all duration-500 ${
+                        className={`h-1.5 flex-1 rounded-full transition-all duration-700 ${
                           visible && i < Math.ceil(skill.level / 20)
-                            ? "bg-cyan-500 shadow-[0_0_8px_rgba(6,182,212,0.6)]"
-                            : "bg-slate-800"
+                            ? "bg-gradient-to-r from-indigo-500 to-blue-500"
+                            : "bg-slate-100"
                         }`}
+                        style={{ transitionDelay: `${i * 100}ms` }}
                       />
                     ))}
                   </div>
 
-                  <span className="text-[10px] uppercase font-bold tracking-widest text-slate-500 group-hover:text-slate-400 transition-colors">
+                  <span className="text-[10px] uppercase font-bold tracking-widest text-slate-400 group-hover:text-indigo-400 transition-colors">
                     {skill.category}
                   </span>
                 </div>
@@ -129,25 +126,28 @@ export default function Skills() {
             ))}
           </div>
 
-          {/* Expertise Callout */}
-          <div className="mt-16 p-8 rounded-3xl bg-gradient-to-r from-slate-900 to-slate-950 border border-slate-800 flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="flex gap-6 items-center text-center md:text-left">
-              <div className="w-16 h-16 rounded-2xl bg-blue-600/10 flex items-center justify-center text-blue-500 flex-shrink-0">
-                <Globe size={32} />
+          {/* Expertise Callout - Bold and Colorful */}
+          <div className="mt-20 p-1 bg-gradient-to-r from-indigo-500 via-blue-500 to-cyan-500 rounded-[2.5rem]">
+            <div className="bg-white p-8 md:p-10 rounded-[2.4rem] flex flex-col md:flex-row items-center justify-between gap-8">
+              <div className="flex gap-8 items-center text-center md:text-left flex-col md:flex-row">
+                <div className="w-20 h-20 rounded-3xl bg-indigo-50 flex items-center justify-center text-indigo-600 shadow-inner">
+                  <Globe size={40} />
+                </div>
+                <div>
+                  <h4 className="text-slate-900 font-black text-2xl mb-2">
+                    Full-Cycle Digital Delivery
+                  </h4>
+                  <p className="text-slate-500 max-w-md font-medium leading-relaxed">
+                    From custom <span className="text-indigo-600 font-bold">Next.js</span> applications to 
+                    high-performance <span className="text-blue-600 font-bold">WordPress</span> ecosystems.
+                  </p>
+                </div>
               </div>
-              <div>
-                <h4 className="text-white font-bold text-xl mb-1">
-                  Full-Cycle Digital Delivery
-                </h4>
-                <p className="text-slate-400 max-w-md">
-                  From custom Next.js applications to high-performance WordPress
-                  ecosystems and technical SEO.
-                </p>
-              </div>
+              <button className="group flex items-center gap-3 px-10 py-5 bg-slate-900 hover:bg-indigo-600 text-white font-bold rounded-2xl transition-all shadow-xl shadow-slate-200 hover:shadow-indigo-200">
+                View Portfolio
+                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+              </button>
             </div>
-            <button className="px-8 py-4 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-2xl transition-all">
-              View Portfolio
-            </button>
           </div>
         </div>
       </div>
