@@ -85,6 +85,8 @@ export const projects = [
       "A full-stack web application developed for the Bangladesh Meteorological Department to manage and visualize nationwide weather, agroclimate, and sunshine data efficiently.",
     tags: ["Next.js", "React", "TailwindCSS", "PostgreSQL", "Prisma"],
     featured: true,
+    image:
+      "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?q=80&w=800&auto=format&fit=crop",
   },
   {
     name: "Sydney Demo",
@@ -95,6 +97,8 @@ export const projects = [
       "Developed a modern, responsive business website with a focus on performance, clean UI, and SEO optimization for an Australian client.",
     tags: ["Next.js", "React", "TailwindCSS"],
     featured: true,
+    image:
+      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop",
   },
   {
     name: "Original Plumbing",
@@ -105,6 +109,8 @@ export const projects = [
       "Built a high-converting plumbing service website with optimized UX, fast loading speed, and strong local SEO structure.",
     tags: ["Next.js", "React", "SEO", "TailwindCSS"],
     featured: true,
+    image:
+      "https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=800&auto=format&fit=crop",
   },
   {
     name: "STA Care Service",
@@ -115,6 +121,8 @@ export const projects = [
       "Designed and developed a professional care service website with accessible UI, responsive design, and performance optimization.",
     tags: ["Next.js", "React", "Accessibility", "TailwindCSS"],
     featured: true,
+    image:
+      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=800&auto=format&fit=crop",
   },
   {
     name: "Islami Dawa Institute Bangladesh",
@@ -125,6 +133,8 @@ export const projects = [
       "A full-stack activity management platform designed to streamline daily operations, task tracking, and reporting for nationwide outreach programs.",
     tags: ["Next.js", "React", "TypeScript", "PostgreSQL"],
     featured: true,
+    image:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop",
   },
   {
     name: "Moving Texas",
@@ -135,6 +145,8 @@ export const projects = [
       "A nationwide asset relocation platform focused on efficiently managing and tracking logistics operations across the United States.",
     tags: ["React", "Node.js", "MongoDB", "TailwindCSS"],
     featured: false,
+    image:
+      "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&auto=format&fit=crop",
   },
   {
     name: "ECSEO Microservices",
@@ -145,6 +157,8 @@ export const projects = [
       "A micro ERP system integrating inventory, sales, accounting, and HR into a unified platform for small businesses.",
     tags: ["React", "Node.js", "PostgreSQL", "Redux"],
     featured: false,
+    image:
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop",
   },
   {
     name: "Bangladesh All District Maps",
@@ -155,6 +169,8 @@ export const projects = [
       "Developed an Android application providing detailed district-level information across Bangladesh using Java and Android Studio.",
     tags: ["Java", "Android Studio", "XML"],
     featured: false,
+    image:
+      "https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=800&auto=format&fit=crop",
   },
 ];
 
